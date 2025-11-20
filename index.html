@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foodwagon</title>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🚚 foodwagon</div>
+    <div class="nav">
+        <span>📍 Giao đến: <strong>Mohammadpur Bus Stand, Dhaka</strong></span>
+        <input type="text" id="search-food" placeholder="Search Food" />
+<button onclick="searchFood()">🔍 Tìm món</button>
+
+<input type="text" id="username" placeholder="Tên đăng nhập" />
+<button onclick="login()">🔐 Đăng nhập</button>
+
+    </div>
+</header>
+
+<main>
+    <div class="content">
+        <h1>Are you starving?</h1>
+        <p>Within a few clicks, find meals that are accessible near you</p>
+
+        <div class="search-box">
+            <select id="order-type">
+                <option value="delivery">Delivery</option>
+                <option value="pickup">Pickup</option>
+            </select>
+
+            <input type="text" id="address" placeholder="Enter Your Address" />
+            <button onclick="findFood()">Find Food</button>
+        </div>
+    </div>
+
+    <div class="image">
+        <img src="OIP (1).jpg" alt="Noodles Bowl" />
+    </div>
+</main>
+
+<!-- Giỏ hàng -->
+<div class="cart" id="cart">
+
+    <strong>🛒 Giỏ hàng</strong>
+    <ul id="cart-items"></ul>
+    <input type="text" id="voucher-code" placeholder="Nhập mã giảm giá (ví dụ: GIAM10)">
+
+    <button onclick="confirmOrder()" id="confirm-button">✅ Xác nhận đặt món</button>
+
+    <button onclick="clearCart()">Xóa giỏ hàng</button>
+</div>
+
+<!-- Flash Deal -->
+ <ul id="cart-items"></ul>
+
+  <div class="promo-background">
+    <div class="promo-wrapper">
+      <div class="promo-section">
+
+        <div class="food-item">
+          <img src="Flash Deal Card (1).png" alt="Noodle Bowl" onclick="addToCart('Noodle Bowl', 5.99)">
+          <div class="info">
+            <h3>Greys Vage</h3>
+            <p class="discount">15% Off</p>
+            <p class="days">6 Days Remaining</p>
+          </div>
+        </div>
+
+        <div class="food-item">
+          <img src="Flash Deal Card (2).png" alt="Pasta Salad" onclick="addToCart('Pasta Salad', 4.99)">
+          <div class="info">
+            <h3>Greys Vage</h3>
+            <p class="discount">10% Off</p>
+            <p class="days">6 Days Remaining</p>
+          </div>
+        </div>
+
+        <div class="food-item">
+          <img src="Flash Deal Card (3).png" alt="Healthy Salad" onclick="addToCart('Healthy Salad', 6.49)">
+          <div class="info">
+            <h3>Greys Vage</h3>
+            <p class="discount">25% Off</p>
+            <p class="days">7 Days Remaining</p>
+          </div>
+        </div>
+
+        <div class="food-item">
+          <img src="Flash Deal Card (4).png" alt="Spicy Soup" onclick="addToCart('Spicy Soup', 5.49)">
+          <div class="info">
+            <h3>Greys Vage</h3>
+            <p class="discount">20% Off</p>
+            <p class="days">8 Days Remaining</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- How it works -->
+<div class="how-it-works">
+    <h2>How does it work</h2>
+
+    <div class="steps">
+        <div class="step" id="step-location">
+            <img src="Frame 730.png" alt="Select location">
+        </div>
+
+        <div class="step" id="step-order">
+            <img src="Frame 731.png" alt="Choose order">
+        </div>
+
+        <div class="step" id="step-payment">
+            <img src="Frame 732.png" alt="Pay advanced">
+        </div>
+
+        <div class="step" id="step-enjoy">
+            <img src="Frame 733.png" alt="Enjoy meals">
+        </div>
+    </div>
+</div>
+
+<!-- Popular Items -->
+<section class="popular-items">
+    <h2>Popular Items</h2>
+
+    <div class="items-wrapper">
+        <button class="nav-button" onclick="prevPage()">‹ Prev</button>
+
+        <div class="items">
+
+            <div class="item">
+                <img src="Frame 40.png" alt="Cheese Burger" />
+                <h4>Cheese Burger</h4>
+                <p>From Burger Arena</p>
+                <span>$3.88</span>
+                <button onclick="addToCart('Cheese Burger', 3.88)">Order Now</button>
+            </div>
+
+            <div class="item">
+                <img src="Rectangle 336.png" alt="Toffee's Cake" />
+                <h4>Toffee's Cake</h4>
+                <p>From Top Sticks</p>
+                <span>$4.00</span>
+                <button onclick="addToCart('Toffe’s Cake', 4.00)">Order Now</button>
+            </div>
+
+            <div class="item">
+                <img src="Frame 40 (1).png" alt="Pancake" />
+                <h4>Pancake</h4>
+                <p>From Cake World</p>
+                <span>$2.50</span>
+                <button onclick="addToCart('pancake', 1.99)">Order Now</button>
+            </div>
+
+            <div class="item">
+                <img src="Frame 40 (2).png" alt="Crispy Sandwich" />
+                <h4>Crispy Sandwich</h4>
+                <p>From Fastfood Dine</p>
+                <span>$3.00</span>
+                <button onclick="addToCart('Crispy Sandwich', 3.00)">Order Now</button>
+            </div>
+
+            <div class="item">
+                <img src="Frame 40 (3).png" alt="Thai Soup" />
+                <h4>Thai Soup</h4>
+                <p>From Foody man</p>
+                <span>$2.79</span>
+                <button onclick="addToCart('Thai Soup', 2.79)">Order Now</button>
+            </div>
+
+        </div>
+
+        <button class="nav-button" onclick="nextPage()">Next ›</button>
+    </div>
+</section>
+
+ <ul id="cart-items"></ul>
+
+  <!-- Restaurant Grid -->
+  <div class="restaurant-grid">
+
+    <div class="restaurant-card">
+      <img src="Food Photo.png" alt="Foodworld" onclick="addToCart('Foodworld', 9.99)">
+      <h3>Foodworld</h3>
+      <p>⭐ 46 – 20% off – Fast</p>
+      <div class="status">Opens tomorrow</div>
+    </div>
+
+    <div class="restaurant-card">
+      <img src="Food Photo (1).png" alt="Pizzahub" onclick="addToCart('Pizzahub', 8.49)">
+      <h3>Pizzahub</h3>
+      <p>⭐ 40 – 15% off – Fast</p>
+      <div class="status">Opens tomorrow</div>
+    </div>
+
+    <div class="restaurant-card">
+      <img src="Food Photo (2).png" alt="Donuts hut (Dunkin Donuts)" onclick="addToCart('Donuts hut (Dunkin Donuts)', 5.99)">
+      <h3>Donuts hut (Dunkin Donuts)</h3>
+      <p>⭐ 20 – 10% off – Fast</p>
+      <div class="status open">Open Now</div>
+    </div>
+
+    <div class="restaurant-card">
+      <img src="Food Photo (3).png" alt="Donuts hut (Subway)" onclick="addToCart('Donuts hut (Subway)', 6.49)">
+      <h3>Donuts hut (Subway)</h3>
+      <p>⭐ 50 – 15% off – Fast</p>
+      <div class="status open">Open Now</div>
+    </div>
+
+    <div class="restaurant-card">
+      <img src="Food Photo (4).png" alt="Ruby Tuesday" onclick="addToCart('Ruby Tuesday', 7.99)">
+      <h3>Ruby Tuesday</h3>
+      <p>⭐ 26 – 10% off – Fast</p>
+      <div class="status open">Open Now</div>
+    </div>
+
+    <div class="restaurant-card">
+      <img src="Food Photo (5).png" alt="Kuakata Fried Chicken (KFC)" onclick="addToCart('Kuakata Fried Chicken (KFC)', 10.49)">
+      <h3>Kuakata Fried Chicken (KFC)</h3>
+      <p>⭐ 53 – 25% off – Fast</p>
+      <div class="status open">Open Now</div>
+    </div>
+
+    <div class="restaurant-card">
+      <img src="Image.png" alt="Red Square" onclick="addToCart('Red Square', 6.99)">
+      <h3>Red Square</h3>
+      <p>⭐ 45 – 10% off – Fast</p>
+      <div class="status open">Open Now</div>
+    </div>
+
+    <div class="restaurant-card">
+      <img src="Food Photo (6).png" alt="Taco Bell" onclick="addToCart('Taco Bell', 7.49)">
+      <h3>Taco Bell</h3>
+      <p>⭐ 35 – 10% off – Fast</p>
+      <div class="status open">Open Now</div>
+    </div>
+
+  </div>
+
+<!-- phan6 -->
+ <div class="food-container">
+<section class="food-search">
+  <h2>Search by Food</h2>
+
+  <div class="food-header">
+    <button class="view-all center">View All</button>
+    <div class="nav-right">
+      <span class="view-all-right">View All</span>
+      <button onclick="scrollLeft()">←</button>
+      <button onclick="scrollRight()">→</button>
+    </div>
+  </div>
+
+  <div class="food-list" id="food-list">
+    <div class="food-item">
+      <img src="Food Photo (7).png" alt="Pizza" onclick="orderFood('Pizza')" />
+      <p>Pizza</p>
+    </div>
+    <div class="food-item">
+      <img src="Food Photo (8).png" alt="Burger" onclick="orderFood('Burger')" />
+      <p>Burger</p>
+    </div>
+    <div class="food-item">
+      <img src="Food Photo (9).png" alt="Noodles" onclick="orderFood('Noodles')" />
+      <p>Noodles</p>
+    </div>
+    <div class="food-item">
+      <img src="Food Photo (10).png" alt="Sub-sandwich" onclick="orderFood('Sub-sandwich')" />
+      <p>Sub-sandwich</p>
+    </div>
+    <div class="food-item">
+      <img src="Food Photo (11).png" alt="Chowmein" onclick="orderFood('Chowmein')" />
+      <p>Chowmein</p>
+    </div>
+    <div class="food-item">
+      <img src="Food Photo (12).png" alt="Steak" onclick="orderFood('Steak')" />
+      <p>Steak</p>
+    </div>
+  </div>
+</section>
+</div>
+<!-- phan7 -->
+ </div>
+      <div class="services">
+        <div class="service">
+          <img src="1.png" alt="Daily Discounts">
+          <p>Daily Discounts</p>
+        </div>
+        <div class="service">
+          <img src="2.png" alt="Live Tracing">
+          <p>Live Tracing</p>
+        </div>
+        <div class="service">
+          <img src="3.png" alt="Quick Delivery">
+          <p>Quick Delivery</p>
+        </div>
+      </div>
+    </section>
+  <!-- DAT MON  -->
+  <div class="promo-container">
+    <div class="phones">
+      <img src="Group 709.png" alt="Màn hình đơn hàng" class="phone">
+      <img src="Shadow.png" alt="Màn hình tìm món" class="phone">
+    </div>
+    <div class="text-section">
+      <h1>Install the app</h1>
+      <p>It's never been easier to order food. Look for the finest discounts and you'll be lost in a world of delectable food.</p>
+      <div class="store-buttons">
+        <a href="#" class="google-play">GET IT ON Google Play</a>
+        <a href="#" class="app-store">Download on the App Store</a>
+      </div>
+    </div>
+    <section class="deals-section">
+    <!-- PHAN8 -->
+     <!-- CARD 1 -->
+<div class="deal-card">
+  <div class="deal-text">
+    <h2>Best deals <span>Crispy Sandwiches</span></h2>
+    <p>Enjoy the large size of sandwiches. Complete perfect slice of sandwiches.</p>
+    <button onclick="orderNow('Crispy Sandwiches')">PROCEED TO ORDER</button>
+  </div>
+  <div class="deal-image">
+    <img src="Right (1).png" alt="Sandwich">
+  </div>
+</div>
+
+<!-- CARD 2 -->
+<div class="deal-card reverse">
+  <div class="deal-image">
+    <img src="Right (2).png" alt="Fried Chicken">
+  </div>
+  <div class="deal-text">
+    <h2>Celebrate parties with <span>Fried Chicken</span></h2>
+    <p>Get the best fried chicken smeared with a lip smacking lemon chili flavor. Check out best deals for fried chicken.</p>
+    <button onclick="orderNow('Fried Chicken')">Proceed to order</button>
+  </div>
+</div>
+
+<!-- CARD 3 -->
+<div class="deal-card">
+  <div class="deal-text">
+    <h2>Wanna eat hot & spicy <span>Pizza?</span></h2>
+    <p>Pair up with a friend and enjoy the hot and crispy pizza peeps. Try it with the best deals.</p>
+    <button onclick="orderNow('Pizza')">PROCEED TO ORDER</button>
+  </div>
+  <div class="deal-image">
+    <img src="Right (3).png" alt="Pizza">
+  </div>
+</div>
+<!-- Banner -->
+<section class="banner-full">
+  <img src="Image (1).png" alt="Food combo" class="banner-img" />
+  <div class="banner-content">
+    <h1>Are you ready to order with the best deals?</h1>
+    <button onclick="orderNow('Best Deals')">PROCEED TO ORDER</button>
+  </div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="cities">
+      <h4>Our top cities</h4>
+      <div class="city-lists">
+        <ul>
+          <li onclick="selectCity('San Francisco')">San Francisco</li>
+          <li onclick="selectCity('Miami')">Miami</li>
+          <li onclick="selectCity('San Diego')">San Diego</li>
+          <li onclick="selectCity('East Bay')">East Bay</li>
+          <li onclick="selectCity('Long Beach')">Long Beach</li>
+        </ul>
+        <ul>
+          <li onclick="selectCity('Los Angeles')">Los Angeles</li>
+          <li onclick="selectCity('Washington DC')">Washington DC</li>
+          <li onclick="selectCity('Seattle')">Seattle</li>
+          <li onclick="selectCity('Portland')">Portland</li>
+          <li onclick="selectCity('Nashville')">Nashville</li>
+        </ul>
+        <ul>
+          <li onclick="selectCity('New York City')">New York City</li>
+          <li onclick="selectCity('Orange County')">Orange County</li>
+          <li onclick="selectCity('Atlanta')">Atlanta</li>
+          <li onclick="selectCity('Charlotte')">Charlotte</li>
+          <li onclick="selectCity('Denver')">Denver</li>
+        </ul>
+        <ul>
+          <li onclick="selectCity('Chicago')">Chicago</li>
+          <li onclick="selectCity('Phoenix')">Phoenix</li>
+          <li onclick="selectCity('Las Vegas')">Las Vegas</li>
+          <li onclick="selectCity('Sacramento')">Sacramento</li>
+          <li onclick="selectCity('Oklahoma City')">Oklahoma City</li>
+        </ul>
+        <ul>
+          <li onclick="selectCity('Columbus')">Columbus</li>
+          <li onclick="selectCity('New Mexico')">New Mexico</li>
+          <li onclick="selectCity('Albuquerque')">Albuquerque</li>
+          <li onclick="selectCity('Sacramento')">Sacramento</li>
+          <li onclick="selectCity('New Orleans')">New Orleans</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-middle">
+    <div class="footer-links">
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Help & Support</a></li>
+          <li><a href="#">Partner with us</a></li>
+          <li><a href="#">Ride with us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Refund & Cancellation</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subscribe">
+      <h4>FOLLOW US</h4>
+      <div class="icons">
+        <a href="#">📷</a>
+        <a href="#">🐦</a>
+        <a href="#">📘</a>
+      </div>
+      <p>Receive exclusive offers in your mailbox</p>
+      <form>
+        <input type="email" placeholder="Enter your email">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>All rights Reserved &copy; <strong>Your Company</strong>, 2021</p>
+    <p>Made with <span class="heart">💛</span> by <strong>Themewagon</strong></p>
+  </div>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>
